@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class LibraryManager {
 
-    private List<Book> bookList = new ArrayList<Book>();
+    private List<Book> bookList = new ArrayList<>();
 
     public List<Book> getBookList() {
         return bookList;
@@ -56,6 +57,12 @@ public class LibraryManager {
                 iterator.remove();
             }
         }
+    }
+
+    public List<Book> getSortedCopyList() {
+        List<Book> sorted = new ArrayList<>(bookList);
+        Collections.sort(sorted);
+        return sorted;
     }
 
 

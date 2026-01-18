@@ -72,4 +72,27 @@ public class LibraryManagerTest {
 
         assertEquals(2, library.getBookList().size());
     }
+
+    @Test
+    void sortedList() {
+        LibraryManager library = new LibraryManager();
+
+        library.addBook(new Book("Lord of the Rings"));
+        library.addBook(new Book("V for Vendetta"));
+        library.addBook(new Book("Alice's Adventures in Wonderland"));
+
+        assertEquals("Alice's Adventures in Wonderland", library.getSortedCopyList().getFirst().getTitleBook());
+
+    }
+
+    @Test
+    void notDuplicateTitles() {
+        LibraryManager library = new LibraryManager();
+
+        library.addBook(new Book("Mistborn 1: The Final Empire"));
+        library.addBook(new Book("Mistborn 1: The Final Empire"));
+
+        assertEquals(1, library.getBookList().size());
+
+    }
 }
