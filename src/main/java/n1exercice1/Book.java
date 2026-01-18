@@ -1,3 +1,5 @@
+package n1exercice1;
+
 public class Book implements Comparable<Book> {
 
     private String titleBook;
