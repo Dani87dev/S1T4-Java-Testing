@@ -6,10 +6,6 @@ public class LibraryManager {
 
     private List<Book> bookList = new ArrayList<Book>();
 
-    public LibraryManager(ArrayList bookList) {
-        this.bookList = bookList;
-    }
-
     public List<Book> getBookList() {
         return bookList;
     }
@@ -19,6 +15,17 @@ public class LibraryManager {
     }
 
     public void addBook(Book book) {
+        boolean exist = false;
+        for (Book element : bookList) {
+            if (element.getTitleBook().equalsIgnoreCase(book.getTitleBook())) {
+                exist = true;
+            }
+        }
+
+        if (!exist) {
+            bookList.add(book);
+        }
+
         bookList.add(book);
     }
 
@@ -29,17 +36,27 @@ public class LibraryManager {
     }
 
     public void insertBook(int index, Book book) {
-        bookList.add(index, book);
+        boolean exists = false;
+
+        for (Book b : bookList) {
+            if (b.getTitleBook().equalsIgnoreCase(book.getTitleBook())) {
+                exists = true;
+            }
+        }
+
+        if (!exists) {
+            bookList.add(index, book);
+        }
     }
 
     public void deleteBook(String titleBook) {
-      Iterator<Book> iterator = bookList.iterator();
+        Iterator<Book> iterator = bookList.iterator();
 
-      while(iterator.hasNext()) {
-          if(titleBook.equalsIgnoreCase(iterator.next().getTitleBook())) {
-              iterator.remove();
-          }
-      }
+        while (iterator.hasNext()) {
+            if (titleBook.equalsIgnoreCase(iterator.next().getTitleBook())) {
+                iterator.remove();
+            }
+        }
     }
 
 
