@@ -16,6 +16,7 @@ public class LibraryManager {
 
     public void addBook(Book book) {
         boolean exist = false;
+
         for (Book element : bookList) {
             if (element.getTitleBook().equalsIgnoreCase(book.getTitleBook())) {
                 exist = true;
@@ -25,8 +26,6 @@ public class LibraryManager {
         if (!exist) {
             bookList.add(book);
         }
-
-        bookList.add(book);
     }
 
     public String getTitle(int index) {
