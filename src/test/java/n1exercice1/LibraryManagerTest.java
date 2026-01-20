@@ -10,7 +10,7 @@ public class LibraryManagerTest {
     @Test
     void bookListIsNotNull() {
         LibraryManager library = new LibraryManager();
-        assertNotNull(library.getBookList());
+        assertNotNull(library.getBooksList());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class LibraryManagerTest {
         library.addBook(new Book("Mistborn 2: The Well of Ascension"));
         library.addBook(new Book("Mistborn 3: The Hero of Ages"));
 
-        assertEquals(3, library.getBookList().size());
+        assertEquals(3, library.getBooksList().size());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LibraryManagerTest {
         library.addBook(new Book("Book3"));
         library.deleteBook("Book3");
 
-        assertEquals(2, library.getBookList().size());
+        assertEquals(2, library.getBooksList().size());
     }
 
     @Test
@@ -94,7 +94,7 @@ public class LibraryManagerTest {
         library.addBook(new Book("Mistborn 1: The Final Empire"));
         library.addBook(new Book("Mistborn 1: The Final Empire"));
 
-        assertEquals(1, library.getBookList().size());
+        assertEquals(1, library.getBooksList().size());
 
     }
 }

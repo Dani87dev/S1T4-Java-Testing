@@ -9,7 +9,7 @@ public class LibraryManager {
 
     private List<Book> bookList = new ArrayList<>();
 
-    public List<Book> getBookList() {
+    public List<Book> getBooksList() {
         return bookList;
     }
 
