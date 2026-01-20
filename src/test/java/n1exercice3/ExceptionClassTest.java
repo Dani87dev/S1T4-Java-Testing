@@ -12,7 +12,7 @@ public class ExceptionClassTest {
 
         assertThrows(
                 ArrayIndexOutOfBoundsException.class,
-                () -> obj.makingException()
+                obj::makingException
         );
     }
 
