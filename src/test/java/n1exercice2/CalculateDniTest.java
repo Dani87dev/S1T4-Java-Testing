@@ -2,7 +2,6 @@ package n1exercice2;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -21,7 +20,6 @@ public class CalculateDniTest {
             "90_123_456, B",
             "21_987_654, X"
     })
-
     void calculateDniLetterValidation(int dni, char letter) {
         CalculateDni obj = new CalculateDni();
 
