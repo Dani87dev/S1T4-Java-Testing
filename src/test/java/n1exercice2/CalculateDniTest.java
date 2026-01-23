@@ -9,16 +9,16 @@ public class CalculateDniTest {
 
     @ParameterizedTest
     @CsvSource({
-            "12_345_678, Z",
-            "23_456_789, S",
-            "34_567_890, W",
-            "45_678_901, P",
-            "56_789_012, M",
-            "67_890_123, Y",
-            "78_901_234, D",
-            "89_012_345, J",
-            "90_123_456, B",
-            "21_987_654, X"
+            "76_234_981, D",
+            "54_918_672, P",
+            "81_507_344, J",
+            "39_846_215, A",
+            "67_102_593, R",
+            "92_430_168, E",
+            "58_769_402, D",
+            "44_315_790, B",
+            "71_684_229, Z",
+            "83_950_617, L"
     })
     void calculateDniLetterValidation(int dni, char letter) {
         CalculateDni obj = new CalculateDni();
