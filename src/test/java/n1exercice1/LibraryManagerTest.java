@@ -115,7 +115,7 @@ class LibraryManagerTest {
             library.getTitle(-1);
             fail("Expected IndexOutOfBoundsException was not thrown");
         } catch (IndexOutOfBoundsException e) {
-            
+
         }
     }
 
