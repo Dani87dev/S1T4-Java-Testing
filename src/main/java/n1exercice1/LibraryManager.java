@@ -10,12 +10,9 @@ public class LibraryManager {
     private List<Book> bookList = new ArrayList<>();
 
     public List<Book> getBooksList() {
-        return bookList;
+        return Collections.unmodifiableList(bookList);
     }
 
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
 
     public void addBook(Book book) {
         boolean exist = false;
