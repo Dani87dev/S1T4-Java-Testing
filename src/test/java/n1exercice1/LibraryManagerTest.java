@@ -81,6 +81,10 @@ class LibraryManagerTest {
                 "Alice's Adventures in Wonderland",
                 library.getSortedCopyList().getFirst().getTitleBook()
         );
+
+        assertEquals("Lord of the Rings", library.getTitle(0));
+        assertEquals("V for Vendetta", library.getTitle(1));
+        assertEquals("Alice's Adventures in Wonderland", library.getTitle(2));
     }
 
     @Test
@@ -90,4 +94,29 @@ class LibraryManagerTest {
 
         assertEquals(1, library.getBooksList().size());
     }
+
+    @Test
+    void shouldThrowExceptionWhenInsertingWithInvalidIndex() {
+        library.addBook(new Book("Book1"));
+
+        try {
+            library.insertBook(5, new Book("Book2"));
+            fail("Expected IndexOutOfBoundsException was not thrown");
+        } catch (IndexOutOfBoundsException e) {
+        }
+    }
+
+
+    @Test
+    void shouldThrowExceptionWhenGettingTitleWithNegativeIndex() {
+        library.addBook(new Book("Book1"));
+
+        try {
+            library.getTitle(-1);
+            fail("Expected IndexOutOfBoundsException was not thrown");
+        } catch (IndexOutOfBoundsException e) {
+            
+        }
+    }
+
 }
