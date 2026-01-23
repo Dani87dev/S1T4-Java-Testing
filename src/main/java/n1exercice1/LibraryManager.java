@@ -53,14 +53,19 @@ public class LibraryManager {
 
 
     public void deleteBook(String titleBook) {
-        Iterator<Book> iterator = bookList.iterator();
+        if (titleBook == null) {
+            throw new IllegalArgumentException("Title cannot be null");
+        }
 
+        Iterator<Book> iterator = bookList.iterator();
         while (iterator.hasNext()) {
             if (titleBook.equalsIgnoreCase(iterator.next().getTitleBook())) {
                 iterator.remove();
+                return;
             }
         }
     }
+
 
     public List<Book> getSortedCopyList() {
         List<Book> sorted = new ArrayList<>(bookList);
