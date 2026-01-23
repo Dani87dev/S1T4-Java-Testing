@@ -15,17 +15,34 @@ public class LibraryManager {
 
 
     public void addBook(Book book) {
-        boolean exist = false;
+        if (book == null) {
+            throw new IllegalArgumentException("Book cannot be null");
+        }
 
         for (Book element : bookList) {
             if (element.getTitleBook().equalsIgnoreCase(book.getTitleBook())) {
-                exist = true;
+                return;
+            }
+        }
+        bookList.add(book);
+    }
+
+    public void insertBook(int index, Book book) {
+        if (book == null) {
+            throw new IllegalArgumentException("Book cannot be null");
+        }
+
+        if (index < 0 || index > bookList.size()) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
+        for (Book b : bookList) {
+            if (b.getTitleBook().equalsIgnoreCase(book.getTitleBook())) {
+                return;
             }
         }
 
-        if (!exist) {
-            bookList.add(book);
-        }
+        bookList.add(index, book);
     }
 
     public String getTitle(int index) {
@@ -34,19 +51,6 @@ public class LibraryManager {
         return titleBook;
     }
 
-    public void insertBook(int index, Book book) {
-        boolean exists = false;
-
-        for (Book b : bookList) {
-            if (b.getTitleBook().equalsIgnoreCase(book.getTitleBook())) {
-                exists = true;
-            }
-        }
-
-        if (!exists) {
-            bookList.add(index, book);
-        }
-    }
 
     public void deleteBook(String titleBook) {
         Iterator<Book> iterator = bookList.iterator();
