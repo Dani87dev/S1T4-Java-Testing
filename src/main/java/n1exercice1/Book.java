@@ -4,16 +4,22 @@ public class Book implements Comparable<Book> {
 
     private String title;
 
-    public Book(String titleBook) {
-        this.title = titleBook;
+    public Book(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Book title cannot be null or empty");
+        }
+        this.title = title;
     }
 
     public String getTitleBook() {
         return this.title;
     }
 
-    public void setTitleBook(String titleBook) {
-        this.title= titleBook;
+    public void setTitle(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Book title cannot be null or empty");
+        }
+        this.title = title;
     }
 
     @Override
