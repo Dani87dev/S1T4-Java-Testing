@@ -1,22 +1,26 @@
 package n1exercice1;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+class LibraryManagerTest {
 
-public class LibraryManagerTest {
+    private LibraryManager library;
+
+    @BeforeEach
+    void setUp() {
+        library = new LibraryManager();
+    }
 
     @Test
-    void bookListIsNotNull() {
-        LibraryManager library = new LibraryManager();
+    void shouldInitializeWithNonNullBookList() {
         assertNotNull(library.getBooksList());
     }
 
     @Test
-    void sizeIsCorrect() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldIncreaseSizeWhenAddingBooks() {
         library.addBook(new Book("Mistborn 1: The Final Empire"));
         library.addBook(new Book("Mistborn 2: The Well of Ascension"));
         library.addBook(new Book("Mistborn 3: The Hero of Ages"));
@@ -25,13 +29,10 @@ public class LibraryManagerTest {
     }
 
     @Test
-    void correctAdd() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldStoreBooksInInsertionOrder() {
         library.addBook(new Book("Harry Potter 1"));
         library.addBook(new Book("Harry Potter 2"));
         library.addBook(new Book("Harry Potter 3"));
-
 
         assertEquals("Harry Potter 1", library.getTitle(0));
         assertEquals("Harry Potter 2", library.getTitle(1));
@@ -39,9 +40,7 @@ public class LibraryManagerTest {
     }
 
     @Test
-    void returnsCorrectTitle() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldReturnCorrectTitleByIndex() {
         library.addBook(new Book("Book1"));
         library.addBook(new Book("Book2"));
         library.addBook(new Book("Book3"));
@@ -49,13 +48,11 @@ public class LibraryManagerTest {
         assertEquals("Book3", library.getTitle(2));
     }
 
-
     @Test
-    void correctAddConcretPosition() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldInsertBookAtSpecificPosition() {
         library.addBook(new Book("Harry Potter 1"));
         library.addBook(new Book("Harry Potter 3"));
+
         library.insertBook(1, new Book("Harry Potter 2"));
 
         assertEquals("Harry Potter 1", library.getTitle(0));
@@ -64,37 +61,33 @@ public class LibraryManagerTest {
     }
 
     @Test
-    void correctDelete() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldRemoveBookByTitle() {
         library.addBook(new Book("Book1"));
         library.addBook(new Book("Book2"));
         library.addBook(new Book("Book3"));
+
         library.deleteBook("Book3");
 
         assertEquals(2, library.getBooksList().size());
     }
 
     @Test
-    void sortedList() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldReturnSortedCopyWithoutModifyingOriginal() {
         library.addBook(new Book("Lord of the Rings"));
         library.addBook(new Book("V for Vendetta"));
         library.addBook(new Book("Alice's Adventures in Wonderland"));
 
-        assertEquals("Alice's Adventures in Wonderland", library.getSortedCopyList().getFirst().getTitleBook());
-
+        assertEquals(
+                "Alice's Adventures in Wonderland",
+                library.getSortedCopyList().getFirst().getTitleBook()
+        );
     }
 
     @Test
-    void notDuplicateTitles() {
-        LibraryManager library = new LibraryManager();
-
+    void shouldNotAllowDuplicateTitles() {
         library.addBook(new Book("Mistborn 1: The Final Empire"));
         library.addBook(new Book("Mistborn 1: The Final Empire"));
 
         assertEquals(1, library.getBooksList().size());
-
     }
 }
